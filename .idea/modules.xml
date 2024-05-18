@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Sandbox/.idea/Sandbox.iml" filepath="$PROJECT_DIR$/../Sandbox/.idea/Sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Workopia.iml" filepath="$PROJECT_DIR$/.idea/Workopia.iml" />
+      <module fileurl="file://E:/www/Workopia/workopia-theme/.idea/workopia-theme.iml" filepath="E:/www/Workopia/workopia-theme/.idea/workopia-theme.iml" />
+    </modules>
+  </component>
+</project>
