@@ -23,8 +23,6 @@ function loadView($name) {
     $viewPath = basePath("views/{$name}.view.php");
 
 //    file_exists($viewPath) ? require $viewPath : echo "View '{$name} not found.'";
-    inspect($name);
-    inspect($viewPath);
 
     if (file_exists($viewPath)) {
         require_once $viewPath;
