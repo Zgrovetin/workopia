@@ -25,7 +25,7 @@ function loadView($name) {
 //    file_exists($viewPath) ? require $viewPath : echo "View '{$name} not found.'";
 
     if (file_exists($viewPath)) {
-        require_once $viewPath;
+        require $viewPath;
     } else {
         echo "View $name not found";
     }
