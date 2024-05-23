@@ -1,0 +1,17 @@
+{
+  "name": "zgrovetin/workopia",
+  "description": "Job listing php application",
+  "authors": [
+    {
+      "name": "Kristijan Dimovski",
+      "email": "zgrovetin@hotmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
+
