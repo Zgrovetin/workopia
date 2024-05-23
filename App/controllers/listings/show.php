@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use Framework\Database;
+
 $config = require basePath('config/db.php');
 $db = new Database($config);
 
