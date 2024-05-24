@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -12,7 +13,9 @@ class HomeController
         $config = require basePath('config/db.php');
         $this->db = new Database($config);
     }
-
+/*
+ * Show the latest listings
+ */
     public function index() {
         $listings = $this->db->query('SELECT * FROM listings LIMIT 6')->fetchAll();
 
