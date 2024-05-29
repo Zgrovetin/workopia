@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Framework\Database;
+use Framework\Validation;
 
 class ListingController
 {
@@ -18,6 +19,7 @@ class ListingController
  * @return void
  */
     public function index() {
+
         $listings = $this->db->query('SELECT * FROM listings')->fetchAll();
 
         loadView('listings/index', ['listings' => $listings]);
