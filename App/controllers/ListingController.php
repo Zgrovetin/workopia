@@ -1,4 +1,5 @@
 <?php
+// declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -8,36 +9,43 @@ use Framework\Validation;
 class ListingController
 {
     protected $db;
+
     public function __construct()
     {
         $config = require basePath('config/db.php');
         $this->db = new Database($config);
     }
-/*
- * Show all listings
- *
- * @return void
- */
-    public function index() {
+
+    /*
+     * Show all listings
+     *
+     * @return void
+     */
+    public function index()
+    {
 
         $listings = $this->db->query('SELECT * FROM listings')->fetchAll();
 
         loadView('listings/index', ['listings' => $listings]);
     }
-/*
- * Show the create listing form
- *
- * @return void
- */
-    public function create() {
+
+    /*
+     * Show the create listing form
+     *
+     * @return void
+     */
+    public function create()
+    {
         loadView('listings/create');
     }
-/*
- * Show a single listing
- *
- * @return void
- */
-    public function show ($params) {
+
+    /*
+     * Show a single listing
+     *
+     * @return void
+     */
+    public function show($params)
+    {
         $id = $params['id'] ?? '';
 
         $params = [
@@ -47,11 +55,30 @@ class ListingController
         $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
 
         // Check if listing exists
-        if(!$listing) {
+        if (!$listing) {
             ErrorController::notFound('Listing not found');
             return;
         }
 
         loadView('listings/show', ['listing' => $listing]);
+    }
+
+
+    /**
+     * Store data in the database
+     *
+     * @return void
+     */
+    public function store()
+    {
+        $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits'];
+
+        $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
+
+        $newListingData['user_id'] = 1;
+
+        $newListingData = array_map('sanitize', $newListingData);
+
+        inspectAndDie($newListingData);
     }
 }

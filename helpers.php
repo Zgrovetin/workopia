@@ -1,5 +1,5 @@
 <?php
- declare(strict_types=1);
+ // declare(strict_types=1);
 
 /**
  * Get the base path
@@ -86,4 +86,15 @@ function inspectAndDie($value)
  */
 function formatSalary($salary) {
     return '$ ' . number_format(floatval($salary), 0, ',', ' ');
+}
+
+/**
+ * Sanitize data
+ *
+ * @param string $dirty
+ *
+ * @return string
+ */
+function sanitize($dirty) {
+    return filter_var(trim($dirty), FILTER_SANITIZE_SPECIAL_CHARS);
 }
