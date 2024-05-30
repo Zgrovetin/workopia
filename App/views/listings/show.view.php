@@ -10,8 +10,8 @@ loadPartial('top-banner'); ?>
        <div class="flex justify-between items-center">
       <a class="block p-4 text-blue-700" href="/listings">
         <i class="fa fa-arrow-alt-circle-left"></i>
-Back To Listings
-</a>
+        Back To Listings
+      </a>
       <div class="flex space-x-4 ml-4">
         <a href="/edit" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
         <!-- Delete Form -->
@@ -34,9 +34,11 @@ Back To Listings
 >Local</span
 >
             </li>
-            <li class="mb-2">
-              <strong>Tags:</strong> <span><?= $listing->tags ?></span>
-            </li>
+              <?php if (!empty($listing->tags)):?>
+                  <li class="mb-2">
+                      <strong>Tags:</strong> <span><?=$listing->tags ?></span>
+                  </li>
+              <?php endif; ?>
           </ul>
         </div>
       </div>
