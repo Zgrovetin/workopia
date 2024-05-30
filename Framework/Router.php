@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+//declare(strict_types=1);
 
 namespace Framework;
 
@@ -88,12 +88,21 @@ class Router {
     /**
      * Route the request
      *
-     * @params string $uri
-     * @params string $method
+     * @param string $uri
+     * @param string $method
+     *
+     * @return void
      */
     public function route($uri)
     {
         $requestMethod = $_SERVER['REQUEST_METHOD'];
+
+        // Check for _method input
+        if($requestMethod === 'POST' && isset($_POST['_method'])) {
+            // Override the request method with the value of _method
+            $requestMethod = strtoupper($_POST['_method']);
+        }
+
         foreach ($this->routes as $route) {
             // Split the current URI into segments
             $uriSegments = explode('/', trim($uri, '/'));
